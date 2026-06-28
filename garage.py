@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 
 # Page configuration (Mobile View Design)
 st.set_page_config(page_title="Aditya Auto Service", page_icon="🛠️", layout="centered")
@@ -15,15 +14,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 1. TOP SHOP PHOTO (Smart check for shop.jpg.jpeg)
-if os.path.exists("shop.jpg.jpeg"):
-    st.image("shop.jpg.jpeg", use_container_width=True)
-elif os.path.exists("shop.jpg"):
-    st.image("shop.jpg", use_container_width=True)
-elif os.path.exists("image_1744d9.jpg"):
-    st.image("image_1744d9.jpg", use_container_width=True)
-else:
-    st.warning("⚠️ Dukan ki photo nahi mili! Kripya photo check karein.")
+# 1. TOP SHOP PHOTO (Using a reliable high-quality online garage image)
+st.image("https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?w=600&auto=format&fit=crop&q=80", caption="आदित्य ऑटो सर्विस - बिजनौर", use_container_width=True)
 
 # 2. SHOP NAME & ADDRESS
 st.markdown("<div class='shop-title'>आदित्य ऑटो सर्विस</div>", unsafe_allow_html=True)
@@ -49,7 +41,7 @@ with col2:
 
 # 5. SPARE PARTS HINDI PRICE LIST
 st.markdown("---")
-st.markdown("### ⚡ पार्ट्स और सर्विस रेट लिस्ट (Price List)")
+st.markdown("### ⚡ पार्ट्स और释放 सेवा रेट लिस्ट (Price List)")
 
 parts = [
     {"name": "स्पार्क प्लग (Spark Plug)", "price": "₹80"},
