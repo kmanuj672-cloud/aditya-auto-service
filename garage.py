@@ -4,7 +4,7 @@ import os
 # Page configuration (Mobile View Design)
 st.set_page_config(page_title="Aditya Auto Service", page_icon="🛠️", layout="centered")
 
-# Custom CSS for Premium Dark Theme
+# Custom CSS for Clean Premium Look
 st.markdown("""
     <style>
     .main { background-color: #111111; color: white; }
@@ -15,16 +15,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 1. TOP SHOP PHOTO
-# Desktop par aapki photo ka naam 'shop.jpg' hona chahiye
-if os.path.exists("shop.jpg"):
+# 1. TOP SHOP PHOTO (Smart check for shop.jpg.jpeg)
+if os.path.exists("shop.jpg.jpeg"):
+    st.image("shop.jpg.jpeg", use_container_width=True)
+elif os.path.exists("shop.jpg"):
     st.image("shop.jpg", use_container_width=True)
-elif os.path.exists("shop.jpg.jpg"):
-    st.image("shop.jpg.jpg", use_container_width=True)
 elif os.path.exists("image_1744d9.jpg"):
     st.image("image_1744d9.jpg", use_container_width=True)
 else:
-    st.warning("⚠️ Dukan ki photo nahi mili! Kripya photo ka naam 'shop.jpg' rakh kar Desktop folder me check karein.")
+    st.warning("⚠️ Dukan ki photo nahi mili! Kripya photo check karein.")
 
 # 2. SHOP NAME & ADDRESS
 st.markdown("<div class='shop-title'>आदित्य ऑटो सर्विस</div>", unsafe_allow_html=True)
@@ -53,12 +52,12 @@ st.markdown("---")
 st.markdown("### ⚡ पार्ट्स और सर्विस रेट लिस्ट (Price List)")
 
 parts = [
-    {"name": "स्पार्क प्लग (Spark Plug)", "price": "₹80", "img": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=300&auto=format&fit=crop&q=60"},
-    {"name": "पंचer सुधार (Tyre Puncture)", "price": "₹50", "img": "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=300&auto=format&fit=crop&q=60"},
-    {"name": "इंजन ऑयल (Engine Oil)", "price": "₹350 / ₹400 / ₹450", "img": "https://images.unsplash.com/photo-1486006920555-c77dce18193b?w=300&auto=format&fit=crop&q=60"},
-    {"name": "क्लच वायर (Clutch Wire)", "price": "₹80", "img": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=300&auto=format&fit=crop&q=60"},
-    {"name": "इमरजेंसी पेट्रोल (Petrol 250ml)", "price": "₹30", "img": "https://images.unsplash.com/photo-1527018601619-a508a2be00cd?w=300&auto=format&fit=crop&q=60"},
-    {"name": "बाइक सर्विस चार्ज (Service Charge)", "price": "₹150", "img": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=300&auto=format&fit=crop&q=60"}
+    {"name": "स्पार्क प्लग (Spark Plug)", "price": "₹80"},
+    {"name": "पंचर सुधार (Tyre Puncture)", "price": "₹50"},
+    {"name": "इंजन ऑयल (Engine Oil)", "price": "₹350 / ₹400 / ₹450"},
+    {"name": "क्लच वायर (Clutch Wire)", "price": "₹80"},
+    {"name": "इमरजेंसी पेट्रोल (Petrol 250ml)", "price": "₹30"},
+    {"name": "बाइक सर्विस चार्ज (Service Charge)", "price": "₹150"}
 ]
 
 # Grid Layout for Parts
@@ -67,7 +66,6 @@ for i, part in enumerate(parts):
     current_col = p_col1 if i % 2 == 0 else p_col2
     with current_col:
         with st.container(border=True):
-            st.image(part["img"], use_container_width=True)
             st.markdown(f"**{part['name']}**")
             st.markdown(f"<h4 style='color: #00FF00; margin:0px;'>{part['price']}</h4>", unsafe_allow_html=True)
 
