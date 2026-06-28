@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 # Page configuration (Mobile View Design)
 st.set_page_config(page_title="Aditya Auto Service", page_icon="🛠️", layout="centered")
@@ -14,8 +15,16 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 1. TOP SHOP PHOTO (Asli Bike Garage ki online High-Quality Image)
-st.image("https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80", caption="आदित्य ऑटो सर्विस - बिजनौर", use_container_width=True)
+# 1. TOP SHOP PHOTO (Aapki asli dukan ki photo load hogi)
+photo_loaded = False
+for ext in [".jpg", ".jpeg", ".png", ".JPG", ".JPEG"]:
+    if os.path.exists(f"dukan{ext}"):
+        st.image(f"dukan{ext}", caption="आदित्य ऑटो सर्विस - बिजनौर", use_container_width=True)
+        photo_loaded = True
+        break
+
+if not photo_loaded:
+    st.warning("⚠️ Dukan ki photo 'dukan' naam se GitHub par nahi mili! Kripya photo upload karein.")
 
 # 2. SHOP NAME & ADDRESS
 st.markdown("<div class='shop-title'>आदित्य ऑटो सर्विस</div>", unsafe_allow_html=True)
